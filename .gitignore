@@ -1,0 +1,73 @@
+# ----------------------
+# Python
+# ----------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ----------------------
+# Django
+# ----------------------
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# ----------------------
+# Virtual Environment
+# ----------------------
+venv/
+env/
+ENV/
+.venv/
+
+# ----------------------
+# Environment Variables
+# ----------------------
+.env
+.env.*
+
+# ----------------------
+# Static & Media (optional)
+# ----------------------
+/staticfiles/
+/media/
+
+# ----------------------
+# VS Code
+# ----------------------
+.vscode/
+
+# ----------------------
+# PyCharm
+# ----------------------
+.idea/
+
+# ----------------------
+# OS Files
+# ----------------------
+.DS_Store
+Thumbs.db
+
+----------------------
+# Migrations (optional)
+----------------------
+# Uncomment if you DON'T want migrations
+**/migrations/*
+!**/migrations/__init__.py
+
+# ----------------------
+# Node (if Tailwind CLI used)
+# ----------------------
+node_modules/
+package-lock.json
+yarn.lock
+
+# ----------------------
+# Build / Cache
+# ----------------------
+*.cache
+*.tmp
+
+# optional files 
+superuser.txt

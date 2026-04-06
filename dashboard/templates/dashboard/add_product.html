@@ -1,0 +1,11 @@
+<h2 class="text-xl font-bold mb-4">Add Product</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <input name="title" placeholder="Title" class="border p-2 block mb-2">
+    <input name="price" placeholder="Price" class="border p-2 block mb-2">
+    <input name="image" placeholder="Image URL" class="border p-2 block mb-2">
+    <input name="category" placeholder="Category" class="border p-2 block mb-2">
+
+    <button class="bg-green-500 text-white px-4 py-2">Add</button>
+</form>

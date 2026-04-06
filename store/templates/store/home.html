@@ -1,0 +1,38 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+<form method="GET" class="grid grid-cols-4 gap-4 mb-6">
+    <input type="text" name="q" placeholder="Search..." class="border p-2">
+
+    <select name="category" class="border p-2">
+        <option value="">All Categories</option>
+        {% for cat in categories %}
+        <option value="{{ cat }}">{{ cat }}</option>
+        {% endfor %}
+    </select>
+
+    <input type="number" name="min" placeholder="Min Price" class="border p-2">
+    <input type="number" name="max" placeholder="Max Price" class="border p-2">
+
+    <button class="bg-blue-500 text-white px-4 py-2 col-span-4">
+        Apply Filters
+    </button>
+</form>
+
+<div class="grid grid-cols-4 gap-6">
+    {% for product in products %}
+    <div class="bg-white p-4 shadow rounded">
+        <img src="{{ product.image }}" class="h-40 mx-auto">
+        <h2 class="font-bold mt-2 text-sm">{{ product.title }}</h2>
+        <p class="text-green-600">${{ product.price }}</p>
+
+        <a href="/add/{{ product.id }}/"
+           class="bg-blue-500 text-white px-4 py-2 mt-2 inline-block">
+           Add to Cart
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

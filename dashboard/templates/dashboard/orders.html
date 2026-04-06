@@ -1,0 +1,7 @@
+<h2 class="text-xl font-bold mb-4">Orders</h2>
+
+{% for order in orders %}
+<div class="bg-white p-3 mb-2 shadow">
+    User: {{ order.user.username }} | Total: ${{ order.total }}
+</div>
+{% endfor %}

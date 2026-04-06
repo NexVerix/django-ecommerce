@@ -1,0 +1,47 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+<h2 class="text-xl font-bold mb-4">Your Cart</h2>
+
+{% for item in items %}
+<div class="bg-white p-4 mb-3 shadow flex justify-between items-center">
+
+    <div>
+        <p class="font-bold">{{ item.product.title }}</p>
+        <p>${{ item.product.price }}</p>
+    </div>
+
+    <form method="POST" action="/update/{{ item.id }}/">
+        {% csrf_token %}
+        <input type="number" name="quantity" value="{{ item.quantity }}"
+               class="border w-16 p-1">
+        <button class="bg-blue-500 text-white px-2 py-1">Update</button>
+    </form>
+
+    <a href="/remove/{{ item.id }}/"
+       class="bg-red-500 text-white px-3 py-1">
+       Remove
+    </a>
+
+</div>
+{% endfor %}
+
+<h3 class="mt-4 font-bold">Total: ${{ total }}</h3>
+
+<button id="checkout-btn" class="bg-green-500 text-white px-4 py-2 mt-4">
+    Checkout
+</button>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+const stripe = Stripe("YOUR_PUBLIC_KEY");
+
+document.getElementById("checkout-btn").addEventListener("click", () => {
+    fetch("/checkout/")
+    .then(res => res.json())
+    .then(data => stripe.redirectToCheckout({ sessionId: data.id }));
+});
+</script>
+
+{% endblock %}
